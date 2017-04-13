@@ -274,6 +274,11 @@
             contextmenu: function (e) {
                 var $this = $(this);
 
+                // Disable when there is a modal open on the page
+                if( $this.hasClass('.modal-open') || $this.parents('.modal-open').length > 0 ){
+                    return;
+                }
+
                 // disable actual context-menu if we are using the right mouse button as the trigger
                 if (e.data.trigger === 'right') {
                     e.preventDefault();

@@ -11,7 +11,7 @@
  * Licensed under
  *   MIT License http://www.opensource.org/licenses/mit-license
  *
- * Date: 2017-04-03T15:28:34.533Z
+ * Date: 2017-04-13T12:56:58.136Z
  */
 
 // jscs:disable
@@ -273,6 +273,11 @@
             // contextmenu show dispatcher
             contextmenu: function (e) {
                 var $this = $(this);
+
+                // Disable when there is a modal open on the page
+                if( $this.hasClass('.modal-open') || $this.parents('.modal-open').length > 0 ){
+                    return;
+                }
 
                 // disable actual context-menu if we are using the right mouse button as the trigger
                 if (e.data.trigger === 'right') {
